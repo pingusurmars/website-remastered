@@ -9,9 +9,10 @@
 	<main>
 		{@render children()}
 	</main>
-
 </div>
 
 <style>
-
+	.app {
+		min-height: 100vh;
+	}
 </style>
