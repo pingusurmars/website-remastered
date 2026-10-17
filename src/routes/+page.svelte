@@ -4,7 +4,7 @@
 	import penguin from '#lib/images/android-chrome-512x512.png';
 
 	// ── Edit your info here ─────────────────────────────────────
-	const NAME = 'PinguSurMars_';
+	const NAME = 'PinguSurMars';
 	const WORDMARK = 'PinguSurMars_';
 	const TAGLINE = '@pingusurmars';
 	const BIO =
@@ -115,7 +115,7 @@
 </script>
 
 <svelte:head>
-	<title>{NAME} — links</title>
+	<title>{NAME} — home</title>
 	<meta name="description" content="{NAME} — {BIO}" />
 </svelte:head>
 
