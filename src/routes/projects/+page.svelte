@@ -2,7 +2,7 @@
 	import Starfield from '#lib/components/Starfield.svelte';
 
 	// ── Edit your stuff here ────────────────────────────────────
-	const NAME = 'PinguSurMars_';
+	const NAME = 'PinguSurMars';
 	type Project = { name: string; desc: string; href?: string };
 
 	const PROJECTS: Project[] = [
@@ -14,7 +14,7 @@
 
 <svelte:head>
 	<title>projects — {NAME}</title>
-	<meta name="description" content="Projects by {NAME}" />
+	<meta name="description" content="{NAME}'s Projects" />
 </svelte:head>
 
 <div class="relative flex min-h-screen items-center justify-center overflow-hidden bg-void text-starlight">
