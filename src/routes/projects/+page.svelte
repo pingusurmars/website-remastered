@@ -74,7 +74,7 @@
 						<span
 							class="text-starlight/90 underline decoration-dusk/0 decoration-2 underline-offset-4 transition-colors group-hover:decoration-dusk/50"
 						>
-							github
+							more on github
 						</span>
 						<span class="text-xs text-dusk/70">
 							<span class="sr-only">(opens in a new tab)</span>
