@@ -9,6 +9,7 @@
 	const BIO =
 		'French idiot tinkering with Svelte, bots & random tech. I might share some of the stuff I build here.';
 	const DOMAIN = 'pingusurmars.xyz';
+	const SOURCELINK = 'https://github.com/pingusurmars/website-remastered';
 
 	type Page = { label: string; href: string; desc: string; icon: string };
 
@@ -148,7 +149,15 @@
 			>
 				<span class="flex items-center gap-2">
 					<span class="h-1.5 w-1.5 rounded-full bg-mars"></span>
-					open for fun projects
+					source available
+					<a
+						href={SOURCELINK}
+						target="_blank"
+						rel="noreferrer"
+						class="underline decoration-dusk/0 underline-offset-4 transition-colors hover:text-starlight hover:decoration-dusk/50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dusk/50"
+					>
+						here
+					</a>
 				</span>
 				<span>{DOMAIN}</span>
 			</footer>

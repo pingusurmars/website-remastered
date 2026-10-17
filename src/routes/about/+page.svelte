@@ -4,8 +4,8 @@
 	// ── Edit your info here ─────────────────────────────────────
 	const NAME = 'PinguSurMars_';
 	const PARAGRAPHS = [
-		'French idiot, evidently. I build small things for the internet — mostly with Svelte, sometimes with bots attached.',
-		'This is the new place. The old one is still around if you are feeling nostalgic.'
+		'French idiot, evidently. I build random things every now and then — mostly web-related.',
+		" “why remake yet another website?” old one was getting pretty old and i felt like some change wouldn't hurt anybody",
 	];
 	const CURRENT = [
 		{ label: 'building', value: 'this website' },

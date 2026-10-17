@@ -6,8 +6,8 @@
 	type Project = { name: string; desc: string; href?: string };
 
 	const PROJECTS: Project[] = [
-		{ name: 'pingusurmars.xyz', desc: 'you', href: '/' },
-		{ name: 'discord bot', desc: 'does bot things, badly' },
+		{ name: 'pingusurmars.xyz', desc: "you're here right now", href: '/' },
+		{ name: 'endxrcraft.zip', desc: "friend's website, pretty barebones as of right now", href: 'https://endxrcraft.zip' },
 		{ name: '???', desc: 'this space is yours' }
 	];
 	const GITHUB = 'https://github.com/pingusurmars';
