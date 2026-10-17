@@ -116,7 +116,7 @@
 </script>
 
 <svelte:head>
-	<title>{NAME} — home</title>
+	<title>home — {NAME}</title>
 	<meta name="description" content="{NAME} — {BIO}" />
 </svelte:head>
 
