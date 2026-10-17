@@ -1,0 +1,13 @@
+{
+	"$schema": "https://json.schemastore.org/wrangler.jsonc",
+	"name": "website-remastered",
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"compatibility_date": "2026-10-12",
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare"
+	}
+}
