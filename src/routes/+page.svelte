@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Starfield from '#lib/components/Starfield.svelte';
+	import { fitText } from '#lib/actions/fitText';
 	import { fade } from 'svelte/transition';
 	import penguin from '#lib/images/android-chrome-512x512.png';
 
@@ -147,7 +148,10 @@
 							alt="The Penguin"
 							class="h-16 w-12 shrink-0 rounded-full  sm:h-16 sm:w-16"
 						/>
-						<h1 class="font-display text-5xl leading-none italic text-starlight sm:text-6xl">
+						<h1
+						use:fitText={{ min: '1.5rem' }}
+						class="min-w-0 flex-1 font-display text-5xl leading-none italic text-starlight sm:text-6xl"
+					>
 							{WORDMARK}
 						</h1>
 					</div>
