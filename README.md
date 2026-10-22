@@ -1,5 +1,5 @@
 # My website (v4, episode idk, season one of too many)
-###### ⚠️ THIS WEBSITE ISN'T FINISHED AND IS ACTIVELY BEING MADE
+###### ⚠️ THIS WEBSITE ISN'T FINISHED AND IS SEMI-ACTIVELY BEING MADE
 
 Yep, yet again another redesign of my website, but this time with the help of opencode *free* cause i'm broke enough as is. If anything is broken or looks off pls open an issue. 
 
