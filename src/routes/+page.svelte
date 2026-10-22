@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Starfield from '#lib/components/Starfield.svelte';
 	import { fitText } from '#lib/actions/fitText';
 	import { fade } from 'svelte/transition';
 	import penguin from '#lib/images/android-chrome-512x512.png';
@@ -13,7 +12,8 @@
 	const DOMAIN = 'pingusurmars.xyz';
 	const SOURCELINK = 'https://github.com/pingusurmars/website-remastered';
 	const EMAIL = 'pingusurmars@outlook.dk';
-	const PGP_KEY_URL = 'https://keys.openpgp.org/vks/v1/by-fingerprint/6CC84A6552019A1F866B538563637476CAD2FF12';
+	const PGP_KEY_URL =
+		'https://keys.openpgp.org/vks/v1/by-fingerprint/6CC84A6552019A1F866B538563637476CAD2FF12';
 	type Page = { label: string; href: string; desc: string; icon: string };
 
 	// Lucide-style stroke icons (inner SVG markup)
@@ -120,230 +120,219 @@
 	<meta name="description" content="{NAME} — {BIO}" />
 </svelte:head>
 
-<div class="relative flex min-h-screen items-center justify-center overflow-hidden bg-void text-starlight">
-	<!-- Void fading into dark blue -->
-	<div class="absolute inset-0 bg-gradient-to-b from-void via-[#070e22] to-[#0d1c3d]"></div>
-
-	<!-- Stars -->
-	<Starfield />
-
-	<!-- Faint horizon glow -->
-	<div
-		class="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-horizon/20 to-transparent"
-		aria-hidden="true"
-	></div>
-
-	<!-- Instrument panel -->
-	<main class="relative z-10 w-full max-w-4xl px-4">
-		<section
-			class="overflow-hidden rounded-xl border border-white/[0.07] bg-deep/75 shadow-[0_30px_90px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+<!-- Instrument panel -->
+<main class="relative z-10 w-full max-w-4xl px-4">
+	<section
+		class="overflow-hidden rounded-xl border border-white/[0.07] bg-deep/75 shadow-[0_30px_90px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+	>
+		<div
+			class="grid gap-8 p-8 sm:p-10 md:grid-cols-[minmax(0,1.5fr)_1px_minmax(0,1fr)] md:gap-x-10"
 		>
-			<div class="grid gap-8 p-8 sm:p-10 md:grid-cols-[minmax(0,1.5fr)_1px_minmax(0,1fr)] md:gap-x-10">
-				<!-- Identity -->
-				<div class="min-w-0">
-					<p class="font-mono text-xs text-dusk">{TAGLINE}</p>
-					<div class="mt-4 flex items-center gap-3">
-						<img
-							src={penguin}
-							alt="The Penguin"
-							class="h-16 w-12 shrink-0 rounded-full  sm:h-16 sm:w-16"
-						/>
-						<h1
+			<!-- Identity -->
+			<div class="min-w-0">
+				<p class="font-mono text-xs text-dusk">{TAGLINE}</p>
+				<div class="mt-4 flex items-center gap-3">
+					<img
+						src={penguin}
+						alt="The Penguin"
+						class="h-16 w-12 shrink-0 rounded-full sm:h-16 sm:w-16"
+					/>
+					<h1
 						use:fitText={{ min: '1.5rem' }}
-						class="min-w-0 flex-1 font-display text-5xl leading-none italic text-starlight sm:text-6xl"
+						class="min-w-0 flex-1 font-display text-5xl leading-none text-starlight italic sm:text-6xl"
 					>
-							{WORDMARK}
-						</h1>
-					</div>
-					<p class="mt-6 max-w-[46ch] font-mono text-[13px] leading-[1.8] text-dusk">{BIO}</p>
+						{WORDMARK}
+					</h1>
 				</div>
-
-				<div class="hidden bg-white/[0.07] md:block" aria-hidden="true"></div>
-
-				<!-- Pages -->
-				<nav aria-label="Pages" class="-my-1 flex flex-col justify-center">
-					{#each PAGES as p (p.label)}
-						<a
-							href={p.href}
-							target={p.href.startsWith('http') ? '_blank' : undefined}
-							rel={p.href.startsWith('http') ? 'noreferrer' : undefined}
-							class="group flex items-baseline justify-between gap-4 border-b border-white/[0.05] py-3 font-mono text-sm text-dusk transition-colors last:border-b-0 hover:text-starlight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dusk/50"
-						>
-							<span
-								class="flex items-center gap-2.5 text-starlight/90 underline decoration-dusk/0 decoration-2 underline-offset-4 transition-colors group-hover:decoration-dusk/50"
-							>
-								<svg
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.75"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="h-4 w-4 shrink-0 text-dusk/70"
-									aria-hidden="true"
-								>
-									{@html p.icon}
-								</svg>
-								{p.label}
-							</span>
-							{#if p.href.startsWith('http')}
-								<span class="text-xs text-dusk/70">
-									<span class="sr-only">(opens in a new tab)</span>
-									<span aria-hidden="true">↗</span>
-								</span>
-							{:else}
-								<span class="text-xs text-dusk/70">{p.desc}</span>
-							{/if}
-						</a>
-					{/each}
-				</nav>
+				<p class="mt-6 max-w-[46ch] font-mono text-[13px] leading-[1.8] text-dusk">{BIO}</p>
 			</div>
 
-			<!-- Footer strip -->
-			<footer
-				class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-white/[0.06] px-8 py-4 font-mono text-[11px] text-dusk/80 sm:px-10"
-			>
-				<span class="flex items-center gap-2">
-					<span class="h-1.5 w-1.5 rounded-full bg-mars"></span>
-					source available
+			<div class="hidden bg-white/[0.07] md:block" aria-hidden="true"></div>
+
+			<!-- Pages -->
+			<nav aria-label="Pages" class="-my-1 flex flex-col justify-center">
+				{#each PAGES as p (p.label)}
 					<a
-						href={SOURCELINK}
-						target="_blank"
-						rel="noreferrer"
-						class="underline decoration-dusk/0 underline-offset-4 transition-colors hover:text-starlight hover:decoration-dusk/50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dusk/50"
+						href={p.href}
+						target={p.href.startsWith('http') ? '_blank' : undefined}
+						rel={p.href.startsWith('http') ? 'noreferrer' : undefined}
+						class="group flex items-baseline justify-between gap-4 border-b border-white/[0.05] py-3 font-mono text-sm text-dusk transition-colors last:border-b-0 hover:text-starlight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dusk/50"
 					>
-						here
-					</a>
-				</span>
-				<span>{DOMAIN}</span>
-			</footer>
-		</section>
-
-		<!-- Socials: equal-width buttons filling the row, like taskbar apps -->
-		<nav aria-label="Social links" class="mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-5">
-			{#each SOCIALS as s, i (s.label)}
-				<div
-					class="relative {i === SOCIALS.length - 1 ? 'col-span-2 sm:col-span-1' : ''}"
-					data-social-root
-				>
-					{#snippet inner()}
-						<svg
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							class="h-3.5 w-3.5 shrink-0 opacity-80"
-							aria-hidden="true"
+						<span
+							class="flex items-center gap-2.5 text-starlight/90 underline decoration-dusk/0 decoration-2 underline-offset-4 transition-colors group-hover:decoration-dusk/50"
 						>
-							{@html s.icon}
-						</svg>
-						<span class="truncate">{s.label}</span>
-					{/snippet}
-
-					{#if s.popover}
-						<button
-							type="button"
-							aria-haspopup="true"
-							aria-expanded={openPopover === s.label}
-							onclick={() => (openPopover = openPopover === s.label ? null : s.label)}
-							class="{SOCIAL_BTN} cursor-pointer"
-						>
-							{@render inner()}
-						</button>
-
-						{#if openPopover === s.label}
-							<div
-								role="dialog"
-								aria-label="{s.label} options"
-								class="absolute bottom-[calc(100%+0.5rem)] z-20 w-60 rounded-lg border border-white/[0.1] bg-deep/95 p-4 text-left font-mono text-xs leading-relaxed text-dusk shadow-[0_16px_48px_-12px_rgba(0,0,0,0.9)] backdrop-blur-xl {i === 0
-									? 'left-0'
-									: i === SOCIALS.length - 1
-										? 'right-0'
-										: 'left-1/2 -translate-x-1/2'}"
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.75"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="h-4 w-4 shrink-0 text-dusk/70"
+								aria-hidden="true"
 							>
-								{#if s.popover === 'discord'}
-									<p>
-										add
-										<button
-											type="button"
-											onclick={copyHandle}
-											class="relative inline-flex cursor-pointer items-center gap-1 rounded border border-white/[0.1] bg-white/[0.05] px-1.5 py-0.5 text-starlight transition-colors hover:border-white/[0.25] hover:bg-white/[0.1]"
-											title="copy to clipboard"
-										>
-											{TAGLINE}
-											{#if handleCopied}
-												<svg
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													stroke-width="2"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													class="h-3 w-3 text-dusk"
-													aria-hidden="true"
-												>
-													<!-- lucide check -->
-													<path d="M20 6 9 17l-5-5" />
-												</svg>
-											{:else}
-												<svg
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													stroke-width="2"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													class="h-3 w-3 opacity-60"
-													aria-hidden="true"
-												>
-													<!-- lucide copy -->
-													<rect width="14" height="14" x="8" y="8" rx="2" /><path
-														d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-													/>
-												</svg>
-											{/if}
-											{#if handleCopied}
-												<span
-													role="status"
-													transition:fade={{ duration: 150 }}
-													class="pointer-events-none absolute -top-0.5 left-1/2 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded border border-white/[0.12] bg-deep/95 px-2 py-0.5 text-[10px] text-dusk shadow-lg"
-												>
-													copied
-												</span>
-											{/if}
-										</button>
-										as a friend, or send me a DM if
-										we have servers in common.
-									</p>
-									<a
-										href={s.href}
-										target="_blank"
-										rel="noreferrer"
-										class="{LINK_CLS} mt-3 inline-flex items-center gap-1"
-									>
-										open discord
-										<span class="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span>
-									</a>
-								{:else if s.popover === 'email'}
-									<a href={`mailto:${EMAIL}`} class="{LINK_CLS} break-all">{EMAIL}</a>
-									<br />pls use my
-									<a
-										href={PGP_KEY_URL}
-										target="_blank"
-										rel="noreferrer"
-										class="{LINK_CLS} mt-2.5 inline-flex items-center gap-1"
-									>
-										pgp key
-										<span class="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span>
-									</a> if you plan on sending anything private (like nuclear launch codes, top secret area 51 pics or similar)
-								{/if}
-							</div>
+								{@html p.icon}
+							</svg>
+							{p.label}
+						</span>
+						{#if p.href.startsWith('http')}
+							<span class="text-xs text-dusk/70">
+								<span class="sr-only">(opens in a new tab)</span>
+								<span aria-hidden="true">↗</span>
+							</span>
+						{:else}
+							<span class="text-xs text-dusk/70">{p.desc}</span>
 						{/if}
-					{:else}
-						<a href={s.href} target="_blank" rel="noreferrer" class={SOCIAL_BTN}>
-							{@render inner()}
-						</a>
+					</a>
+				{/each}
+			</nav>
+		</div>
+
+		<!-- Footer strip -->
+		<footer
+			class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-white/[0.06] px-8 py-4 font-mono text-[11px] text-dusk/80 sm:px-10"
+		>
+			<span class="flex items-center gap-2">
+				<span class="h-1.5 w-1.5 rounded-full bg-mars"></span>
+				source available
+				<a
+					href={SOURCELINK}
+					target="_blank"
+					rel="noreferrer"
+					class="underline decoration-dusk/0 underline-offset-4 transition-colors hover:text-starlight hover:decoration-dusk/50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dusk/50"
+				>
+					here
+				</a>
+			</span>
+			<span>{DOMAIN}</span>
+		</footer>
+	</section>
+
+	<!-- Socials: equal-width buttons filling the row, like taskbar apps -->
+	<nav aria-label="Social links" class="mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-5">
+		{#each SOCIALS as s, i (s.label)}
+			<div
+				class="relative {i === SOCIALS.length - 1 ? 'col-span-2 sm:col-span-1' : ''}"
+				data-social-root
+			>
+				{#snippet inner()}
+					<svg
+						viewBox="0 0 24 24"
+						fill="currentColor"
+						class="h-3.5 w-3.5 shrink-0 opacity-80"
+						aria-hidden="true"
+					>
+						{@html s.icon}
+					</svg>
+					<span class="truncate">{s.label}</span>
+				{/snippet}
+
+				{#if s.popover}
+					<button
+						type="button"
+						aria-haspopup="true"
+						aria-expanded={openPopover === s.label}
+						onclick={() => (openPopover = openPopover === s.label ? null : s.label)}
+						class="{SOCIAL_BTN} cursor-pointer"
+					>
+						{@render inner()}
+					</button>
+
+					{#if openPopover === s.label}
+						<div
+							role="dialog"
+							aria-label="{s.label} options"
+							class="absolute bottom-[calc(100%+0.5rem)] z-20 w-60 rounded-lg border border-white/[0.1] bg-deep/95 p-4 text-left font-mono text-xs leading-relaxed text-dusk shadow-[0_16px_48px_-12px_rgba(0,0,0,0.9)] backdrop-blur-xl {i ===
+							0
+								? 'left-0'
+								: i === SOCIALS.length - 1
+									? 'right-0'
+									: 'left-1/2 -translate-x-1/2'}"
+						>
+							{#if s.popover === 'discord'}
+								<p>
+									add
+									<button
+										type="button"
+										onclick={copyHandle}
+										class="relative inline-flex cursor-pointer items-center gap-1 rounded border border-white/[0.1] bg-white/[0.05] px-1.5 py-0.5 text-starlight transition-colors hover:border-white/[0.25] hover:bg-white/[0.1]"
+										title="copy to clipboard"
+									>
+										{TAGLINE}
+										{#if handleCopied}
+											<svg
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="h-3 w-3 text-dusk"
+												aria-hidden="true"
+											>
+												<!-- lucide check -->
+												<path d="M20 6 9 17l-5-5" />
+											</svg>
+										{:else}
+											<svg
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="h-3 w-3 opacity-60"
+												aria-hidden="true"
+											>
+												<!-- lucide copy -->
+												<rect width="14" height="14" x="8" y="8" rx="2" /><path
+													d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+												/>
+											</svg>
+										{/if}
+										{#if handleCopied}
+											<span
+												role="status"
+												transition:fade={{ duration: 150 }}
+												class="pointer-events-none absolute -top-0.5 left-1/2 -translate-x-1/2 -translate-y-full rounded border border-white/[0.12] bg-deep/95 px-2 py-0.5 text-[10px] whitespace-nowrap text-dusk shadow-lg"
+											>
+												copied
+											</span>
+										{/if}
+									</button>
+									as a friend, or send me a DM if we have servers in common.
+								</p>
+								<a
+									href={s.href}
+									target="_blank"
+									rel="noreferrer"
+									class="{LINK_CLS} mt-3 inline-flex items-center gap-1"
+								>
+									open discord
+									<span class="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span>
+								</a>
+							{:else if s.popover === 'email'}
+								<a href={`mailto:${EMAIL}`} class="{LINK_CLS} break-all">{EMAIL}</a>
+								<br />pls use my
+								<a
+									href={PGP_KEY_URL}
+									target="_blank"
+									rel="noreferrer"
+									class="{LINK_CLS} mt-2.5 inline-flex items-center gap-1"
+								>
+									pgp key
+									<span class="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span>
+								</a> if you plan on sending anything private (like nuclear launch codes, top secret area
+								51 pics or similar)
+							{/if}
+						</div>
 					{/if}
-				</div>
-			{/each}
-		</nav>
-	</main>
-</div>
+				{:else}
+					<a href={s.href} target="_blank" rel="noreferrer" class={SOCIAL_BTN}>
+						{@render inner()}
+					</a>
+				{/if}
+			</div>
+		{/each}
+	</nav>
+</main>
