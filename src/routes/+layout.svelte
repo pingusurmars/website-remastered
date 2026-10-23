@@ -28,7 +28,39 @@
 		delay: prefersReducedMotion.current ? 0 : 80,
 		easing: cubicOut
 	});
+
+	// ── Konami code ────────────────────────────────────────────
+	const KONAMI = [
+		'ArrowUp',
+		'ArrowUp',
+		'ArrowDown',
+		'ArrowDown',
+		'ArrowLeft',
+		'ArrowRight',
+		'ArrowLeft',
+		'ArrowRight',
+		'b',
+		'a'
+	];
+	let konamiIndex = 0;
+
+	const onKonamiKey = (e: KeyboardEvent) => {
+		// letters match case-insensitively so B/A work with shift held
+		const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+		if (key === KONAMI[konamiIndex]) {
+			konamiIndex += 1;
+			if (konamiIndex === KONAMI.length) {
+				konamiIndex = 0;
+				window.open('https://mswp.pingusurmars.xyz', '_blank', 'noopener');
+			}
+		} else {
+			// start over, unless this key is the first key of a new attempt
+			konamiIndex = key === KONAMI[0] ? 1 : 0;
+		}
+	};
 </script>
+
+<svelte:window onkeydown={onKonamiKey} />
 
 <svelte:head>
 	<link href={favicon} rel="icon" />
